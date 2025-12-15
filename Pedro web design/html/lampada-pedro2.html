@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedro
+   Light Bulb</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  
+  <style>
+    :root {
+      --gabriel: rgb(143, 143, 188);
+      --ster: purple;
+      --nicolas: rgb(67, 67, 67);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: var(--ster);
+      background-image: linear-gradient(to top, var(--gabriel), var(--nicolas));
+      background-attachment: fixed;
+    }
+    header, section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    button {
+      width: 80px;
+    }
+    img {
+      width: 150px;
+      margin: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lâmpada</h1>
+  </header>
+  <section>
+    <div>
+      <img src="lamp_off.jpeg" alt="Lâmpada apagada" id="lamp">
+    </div>
+    <div>
+      <button id="turnOn">Ligar</button>
+      <button id="turnOff">Desligar</button>
+    </div>
+  </section>
+
+  <script>
+    const turnOn = document.getElementById('turnOn');
+    const turnOff = document.getElementById('turnOff');
+    const lamp = document.getElementById('lamp');
+
+    function isLampBroken() {
+      return lamp.src.includes('lamp_broke'); 
+    }
+
+    function lampOn() {
+      if (!isLampBroken()) {
+        lamp.src = 'lamp_on.jpeg';
+      }
+    }
+
+    function lampOff() {
+      if (!isLampBroken()) {
+        lamp.src = 'lamp_off.jpeg';
+      }
+    }
+
+    function lampBroken() {
+      lamp.src = 'lamp_broke.jpeg';
+    }
+
+    turnOn.addEventListener('click', lampOn);
+    turnOff.addEventListener('click', lampOff);
+    lamp.addEventListener('mouseover', lampOn);
+    lamp.addEventListener('mouseleave', lampOff);
+    lamp.addEventListener('dblclick', lampBroken);
+  </script>
+</body>
+</html>
